@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+streamlit
+pydantic-settings
+python-multipart
+sentence-transformers
+faiss-cpu
+rank-bm25
+numpy
+pypdf
+scikit-learn
+pytest
+httpx
+ruff
+black
