@@ -3,6 +3,7 @@ from app.rag.embedder import embed_texts
 from app.rag.vector_store import FaissStore
 from app.rag.bm25 import BM25Index
 
+
 class HybridRetriever:
     def __init__(self, store: FaissStore, bm25: BM25Index, alpha: float = 0.55):
         self.store = store

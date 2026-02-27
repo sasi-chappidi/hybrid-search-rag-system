@@ -2,10 +2,12 @@ from typing import List, Dict
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 def _split_sentences(text: str) -> List[str]:
     text = text.replace("\n", " ")
     parts = [s.strip() for s in text.split(".") if s.strip()]
     return [p + "." for p in parts]
+
 
 def answer_locally(question: str, contexts: List[Dict], max_sentences: int = 4) -> str:
     if not contexts:
@@ -43,9 +45,12 @@ def answer_locally(question: str, contexts: List[Dict], max_sentences: int = 4) 
 
     return "Extracted answer (grounded):\n" + "\n".join(lines)
 
+
 def _summary_fallback(contexts: List[Dict]) -> str:
     lines = []
     for c in contexts[:3]:
         snippet = c["text"][:280].strip()
-        lines.append(f"- {snippet}... (source={c['source']}, page={c.get('page')}, chunk={c['chunk_id']})")
+        lines.append(
+            f"- {snippet}... (source={c['source']}, page={c.get('page')}, chunk={c['chunk_id']})"
+        )
     return "Grounded summary from top evidence:\n" + "\n".join(lines)

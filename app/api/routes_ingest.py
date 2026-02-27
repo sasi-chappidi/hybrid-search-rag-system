@@ -8,8 +8,10 @@ from app.rag.vector_store import FaissStore
 
 router = APIRouter()
 
+
 def _get_store() -> FaissStore:
     return FaissStore(settings.INDEX_DIR, dim=384)  # MiniLM dim
+
 
 @router.post("/build")
 def build_index(reset: bool = True):

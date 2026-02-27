@@ -4,6 +4,7 @@ import faiss
 import numpy as np
 from typing import Dict, List, Tuple
 
+
 class FaissStore:
     def __init__(self, index_dir: str, dim: int):
         self.index_dir = index_dir
@@ -13,7 +14,11 @@ class FaissStore:
         self.meta_path = os.path.join(index_dir, "meta.jsonl")
         self.dim = dim
 
-        self.index = faiss.read_index(self.index_path) if os.path.exists(self.index_path) else faiss.IndexFlatIP(dim)
+        self.index = (
+            faiss.read_index(self.index_path)
+            if os.path.exists(self.index_path)
+            else faiss.IndexFlatIP(dim)
+        )
 
         self.meta: List[Dict] = []
         if os.path.exists(self.meta_path):

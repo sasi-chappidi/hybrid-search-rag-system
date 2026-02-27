@@ -1,7 +1,9 @@
 from rank_bm25 import BM25Okapi
 
+
 def tokenize(text: str) -> list[str]:
     return text.lower().split()
+
 
 class BM25Index:
     def __init__(self, docs: list[str]):

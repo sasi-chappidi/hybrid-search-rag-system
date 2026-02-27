@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 from typing import Dict, List
 
+
 @dataclass
 class Chunk:
     text: str
     meta: Dict
+
 
 def chunk_text(text: str, meta: Dict, chunk_size: int, overlap: int) -> List[Chunk]:
     clean = " ".join(text.split())

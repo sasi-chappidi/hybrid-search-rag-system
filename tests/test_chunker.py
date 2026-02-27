@@ -1,5 +1,6 @@
 from app.rag.chunker import chunk_text
 
+
 def test_chunk_text_basic():
     text = "hello " * 200
     chunks = chunk_text(text, {"source": "x"}, chunk_size=100, overlap=10)

@@ -13,9 +13,11 @@ _store = None
 _bm25 = None
 _retriever = None
 
+
 class ChatReq(BaseModel):
     question: str
     top_k: int = 5
+
 
 def _lazy_load():
     global _store, _bm25, _retriever
@@ -32,6 +34,7 @@ def _lazy_load():
 
     if _retriever is None:
         _retriever = HybridRetriever(_store, _bm25)
+
 
 @router.post("")
 def chat(req: ChatReq):
